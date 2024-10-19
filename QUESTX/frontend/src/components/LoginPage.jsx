@@ -11,7 +11,7 @@ import {
 
 import googleLogo from "../images/google-logo.png"; // adjust the path to where the image is stored
 
-const LoginPage = () => {
+const LoginPage = ({ darkMode }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -124,17 +124,15 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-[#2A3D47]">
-      {" "}
-      {/* Updated background color */}
-      <div className="px-8 py-6 mt-4 text-left bg-[#213547] shadow-lg rounded-lg">
-        <h3 className="text-2xl font-bold text-center text-[#ffffff]">
-          {isLogin ? "Login to" : "Sign up for"} QUESTX
+    <div className={`flex items-center justify-center min-h-screen ${darkMode ? 'bg-gray-900' : 'bg-gray-200'}`}>
+      <div className={`px-8 py-6 mt-4 text-left ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-lg rounded-lg`}>
+        <h3 className={`text-2xl font-bold text-center ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+          {isLogin ? "Welcome to QUESTX!" : "Sign Up"}
         </h3>
         <form onSubmit={handleSubmit}>
           <div className="mt-4">
             <div>
-              <label className="block text-[#ffffff]" htmlFor="email">
+              <label className={`block ${darkMode ? 'text-[#ffffff]' : 'text-[#000]'} " htmlFor="email`}>
                 Email
               </label>
               <input
@@ -143,42 +141,49 @@ const LoginPage = () => {
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#000000a8]"
+                className={`w-full px-4 ${darkMode ? 'bg-[#ffffff]' : 'bg-gray-200'} py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#000000a8]`}
                 required
               />
             </div>
             <div className="mt-4">
-              <label className="block text-[#ffffff]">Password</label>
+              <label className={`block ${darkMode ? 'text-[#ffffff]' : 'text-[#000]'}`}>Password</label>
               <input
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#000000a8]"
+                className={`w-full px-4 ${darkMode ? 'bg-[#ffffff]' : 'bg-gray-200'} text-black py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#000000a8]`}
                 required
               />
             </div>
             {!isLogin && (
               <div className="mt-4">
-                <label className="block text-[#ffffff]">Confirm Password</label>
+                <label className={`block ${darkMode ? 'text-[#ffffff]' : 'text-[#000]'}`}>Confirm Password</label>
                 <input
                   type="password"
                   placeholder="Confirm Password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#000000a8]"
+                  className={`w-full px-4 ${darkMode ? 'bg-[#ffffff]' : 'bg-gray-200'} text-black py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-[#000000a8]`}
                   required
                 />
               </div>
             )}
             {isLogin && (
-              <button
-                type="button"
+              // <button
+              //   type="button"
+              //   onClick={forgotPassword}
+              //   className="text-sm text-[#ffffff] hover:underline mt-2"
+              // >
+              //   Forgot Password?
+              // </button>
+              <a
+                href="#"
+                className={`text-sm ${darkMode ? 'text-[#ffffff]' : 'text-[#000]'} hover:underline`}
                 onClick={forgotPassword}
-                className="text-sm text-[#ffffff] hover:underline mt-2"
               >
                 Forgot Password?
-              </button>
+              </a>
             )}
             <div className="mt-4">
               <div
@@ -188,28 +193,28 @@ const LoginPage = () => {
             </div>
             <div className="flex items-baseline justify-between">
               <button
-                className="px-6 py-2 mt-4 text-white bg-[#000000a8] rounded-lg hover:bg-[#000000b8] transition-colors duration-300"
+                className={`px-6 py-2 mt-4 ${darkMode ? 'bg-[#ffffff] text-black' : 'bg-gray-200  text-black'}  rounded-lg hover:bg-[#7a7676] transition-colors duration-300`}
                 disabled={isLoading}
               >
                 {isLogin ? "Login" : "Sign Up"}
               </button>
               <a
                 href="#"
-                className="text-sm text-[#ffffff] hover:underline"
+                className={`text-sm ${darkMode ? 'text-[#ffffff]' : 'text-[#000]'} hover:underline`}
                 onClick={() => setIsLogin(!isLogin)}
               >
-                {isLogin ? "Create an account" : "Already have an account?"}
+                {isLogin ? "Create an account?" : "Already have an account?"}
               </a>
             </div>
           </div>
         </form>
         <button
-          className="w-full mt-4 bg-white text-gray-700 py-2 rounded-lg flex items-center justify-center hover:bg-gray-100 border border-gray-300"
+          className={`w-full mt-4 ${darkMode ? 'bg-white text-black' : 'bg-gray-200  text-black'} py-2 rounded-lg flex items-center justify-center hover:bg-gray-100 border border-gray-300`}
           onClick={signInWithGoogle}
           disabled={isLoading}
         >
           <img src={googleLogo} alt="Google Logo" className="w-6 h-6 mr-2" />
-          Sign in with Google
+          Continue with Google
         </button>
 
         {message && <p className="mt-4 text-red-600">{message}</p>}
