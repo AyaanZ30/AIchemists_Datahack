@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { HomeIcon, AcademicCapIcon, BookOpenIcon, ChatBubbleLeftRightIcon, UserIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+import { HomeIcon, AcademicCapIcon, BookOpenIcon, ChatBubbleLeftRightIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -65,12 +65,12 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/" className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-100 hover:text-white">
+          {/* <Link to="/" className="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-100 hover:text-white">
             <span className="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-200">
               <UserIcon className="h-6 w-6" />
             </span>
             {!isCollapsed && <span className="text-sm font-medium">Login/Signup</span>}
-          </Link>
+          </Link> */}
         </li>
       </ul>
     </div>
