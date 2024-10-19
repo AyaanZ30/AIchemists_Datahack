@@ -10,7 +10,7 @@ const Sidebar = ({ darkMode }) => {
   };
 
   return (
-    <div className={`flex flex-col ${isCollapsed ? 'w-20' : 'w-64'} ${darkMode ? 'bg-gray-800' : 'bg-gray-100'} transition-all duration-300 ease-in-out`}>
+    <div className={`flex flex-col ${isCollapsed ? 'w-20' : 'w-64'} ${darkMode ? 'bg-gray-800' : 'bg-gray-300'} transition-all duration-300 ease-in-out`}>
       {/* Toggle Button */}
       <div className={`flex items-center justify-end h-16 p-2`}>
         <button
