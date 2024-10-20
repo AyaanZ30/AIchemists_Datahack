@@ -1,7 +1,7 @@
 import requests
 import ast  
 
-GENIE_API_KEY = "AIzaSyBzB-FbuQimtmUEoaXUwYdGoxUwTXvMO3I"  
+GENIE_API_KEY = "x"  
 GENIE_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent'
 
 def get_difficulty(score):
